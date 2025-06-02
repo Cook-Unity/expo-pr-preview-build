@@ -17,7 +17,8 @@ inputs:
     description: 'GitHub token'
     required: true
   build-command:
-    description: 'Command to build the app'
+    description: 'EAS command to build the app'
+    default: 'eas build --profile development'
     required: true
   
 outputs:
