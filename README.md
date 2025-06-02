@@ -59,7 +59,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Generate Expo Preview Build (if native changed)
-        uses: @cookunity/expo-pr-preview-build@main
+        uses: cook-unity/expo-pr-preview-build@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
