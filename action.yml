@@ -1,0 +1,43 @@
+name: "Expo PR Preview Build"
+description: "Display or create a build for a pull request according to the fingerprint"
+inputs:
+  path:
+    description: 'Location of the eas.json file'
+    default: ./
+    required: false
+  profile:
+    description: 'Which profile to use for building'
+    default: development
+    required: false
+  is-internal:
+    description: 'Whether the build should be internal or not'
+    default: 'true'
+    required: false
+  github-token:
+    description: 'GitHub token'
+    required: true
+  build-command:
+    description: 'Command to build the app'
+    required: true
+  
+outputs:
+  ios-fingerprint:
+    description: 'The fingerprint of the iOS project for the current configuration.'
+  ios-build-id:
+    description: 'The ID of the existing or newly created iOS build.'
+  ios-build-url:
+    description: 'The URL of the existing or newly created iOS build.'
+  ios-build-created-at:
+    description: 'The creation timestamp of the existing or newly created iOS build.'
+  android-fingerprint:
+    description: 'The fingerprint of the Android project for the current configuration.'
+  android-build-id:
+    description: 'The ID of the existing or newly created Android build.'
+  android-build-url:
+    description: 'The URL of the existing or newly created Android build.'
+  android-build-created-at:
+    description: 'The creation timestamp of the existing or newly created Android build.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

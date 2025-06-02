@@ -1,0 +1,33 @@
+{
+  "name": "@cookunity/expo-pr-preview-build",
+  "version": "1.0.0",
+  "description": "Github Action for creating Expo PR builds",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --fix --unsafe",
+    "build": "npx ncc build src/index.ts --source-map"
+  },
+  "keywords": [],
+  "author": "Cookunity",
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "2.0.0-beta.6",
+    "@vercel/ncc": "~0.38.3",
+    "husky": "~9.1.7",
+    "lint-staged": "~16.1.0",
+    "typescript": "~5.8.3"
+  },
+  "dependencies": {
+    "@actions/cache": "~4.0.3",
+    "@actions/core": "~1.11.1",
+    "@actions/exec": "~1.1.1",
+    "@actions/github": "~6.0.1"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --write --unsafe --no-errors-on-unmatched"
+    ]
+  }
+}
