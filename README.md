@@ -38,6 +38,8 @@ on:
 
 jobs:
   build_preview:
+    permissions:
+      pull-requests: write # Required
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
