@@ -1,16 +1,23 @@
 {
-  "name": "@cookunity/expo-pr-preview-build",
+  "name": "@cook-unity/expo-pr-preview-build",
   "version": "1.0.0",
   "description": "Github Action for creating Expo PR builds",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepare": "husky",
     "lint": "biome lint",
     "lint:fix": "biome lint --fix --unsafe",
     "build": "npx ncc build src/index.ts --source-map"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cook-unity/expo-pr-preview-build.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cook-unity/expo-pr-preview-build/issues"
+  },
   "keywords": [],
-  "author": "Cookunity",
+  "author": "Christopher Katoyi Kaba <me@christopher2k.dev>",
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.6",
