@@ -13,9 +13,6 @@ updates:
   directory: /
   schedule:
     interval: weekly
-    day: monday
-    time: 06:00
-    timezone: America/New_York
   open-pull-requests-limit: 5
   cooldown:
     semver-minor-days: 7
