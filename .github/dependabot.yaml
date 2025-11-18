@@ -1,0 +1,53 @@
+# .github/dependabot.yaml
+# =======================================================
+# npm ecosystem's base configuration for Dependabot
+# =======================================================
+# Description:
+# - Automatically detect and update vulnerable/outdated dependencies
+# - Group updates weekly to avoid PR overload
+# - Support npm as the ecosystem
+# =======================================================
+
+version: 2
+
+# Private and public registries configuration
+registries:
+  common-libraries:
+    type: "npm-registry"
+    url: "https://cookunity-mobile-853384537270.d.codeartifact.us-east-1.amazonaws.com/npm/common-libraries/"
+    token: "${{ secrets.CODEARTIFACT_AUTH_TOKEN }}"
+  ui:
+    type: "npm-registry"
+    url: "https://cookunity-mobile-853384537270.d.codeartifact.us-east-1.amazonaws.com/npm/ui/"
+    token: "${{ secrets.CODEARTIFACT_AUTH_TOKEN }}"
+
+updates:
+  - package-ecosystem: "npm"
+    # Root directory (adjust if monorepo has multiple apps)
+    directory: "/"
+    # Group updates weekly to avoid too many PRs - security updates might be out of schedule due to security advisories
+    schedule:
+      interval: "weekly"
+
+    # Limit open PRs at any given time
+    open-pull-requests-limit: 5
+
+    # Wait at least 7 days for minor updates and 15 days for major updates before opening another PR for the same dependency
+    cooldown:
+      semver-minor-days: 7
+      semver-major-days: 15
+
+    # Use both private and public registries 
+    registries:
+      - "common-libraries"
+      - "ui"
+
+    # Set PR metadata conventions
+    commit-message:
+      prefix: "chore"
+      include: "scope"  # e.g., chore(deps): bump react from 17.0.2 to 18.2.0
+    labels:
+      - "dependencies"
+      - "npm"
+
+    # Enable Dependabot auto-merge via GitHub repository settings (not configurable in dependabot.yaml)
